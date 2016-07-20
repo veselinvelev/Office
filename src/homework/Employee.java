@@ -124,6 +124,11 @@ class Employee {
 	}
 
 	void startWorkingDay() {
-		setHoursLeft(MAX_WORKING_HOURS_PER_DAY);
+		if(this != null)
+		this.setHoursLeft(MAX_WORKING_HOURS_PER_DAY);
+	}
+
+	static AllWork getAllWork() {
+		return allWork;
 	}
 }

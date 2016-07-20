@@ -2,7 +2,7 @@ package homework;
 
 class AllWork {
 
-	private static final int MAX_NUMBER_OF_TASKS = 10;
+	static final int MAX_NUMBER_OF_TASKS = 10;
 	private Task[] tasks;
 	private int freePlacesForTasks;
 	private int currentUnassignedTask;
@@ -17,7 +17,7 @@ class AllWork {
 
 	void addTask(Task task) {
 
-		if (task == null && task.getWorkingHours() > 0) {
+		if (task == null || task.getWorkingHours() < 0) {
 			System.out.println("Invalid task!");
 			return;
 		}
@@ -52,5 +52,9 @@ class AllWork {
 		}
 
 		return true;
+	}
+
+	int getCurrentUnassignedTask() {
+		return currentUnassignedTask;
 	}
 }
