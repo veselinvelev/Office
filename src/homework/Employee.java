@@ -2,7 +2,7 @@ package homework;
 
 class Employee {
 
-	private static final int MAX_WORKING_HOURS_PER_DAY = 8;
+	private static final int MAX_WORKING_HOURS_PER_DAY = 10;
 
 	static private AllWork allWork;
 
@@ -16,6 +16,8 @@ class Employee {
 			this.name = name;
 		}
 
+		this.startWorkingDay();
+
 	}
 
 	static void setAllWord(AllWork allWork) {
@@ -23,7 +25,7 @@ class Employee {
 			Employee.allWork = allWork;
 		}
 	}
-	
+
 	void work() {
 
 		if (this.getCurrentTask() != null) {
@@ -34,12 +36,14 @@ class Employee {
 				this.calculateWorkedHours(taskWorkingHours);
 			}
 		} else {
-			
-			this.setCurrentTask(Employee.allWork.getNextTask());
-			if (this.getCurrentTask() != null) {
-				System.out.println("The new task for " + this.name + " is " + this.getCurrentTask().getName());
-			}else {
-				System.out.println("  for " + this.getName());
+			if (Employee.allWork != null) {
+
+				this.setCurrentTask(Employee.allWork.getNextTask());
+				if (this.getCurrentTask() != null) {
+					System.out.println("The new task for " + this.name + " is " + this.getCurrentTask().getName());
+				} else {
+					System.out.println("  for " + this.getName());
+				}
 			}
 		}
 
@@ -124,8 +128,8 @@ class Employee {
 	}
 
 	void startWorkingDay() {
-		if(this != null)
-		this.setHoursLeft(MAX_WORKING_HOURS_PER_DAY);
+		if (this != null)
+			this.setHoursLeft(MAX_WORKING_HOURS_PER_DAY);
 	}
 
 	static AllWork getAllWork() {
